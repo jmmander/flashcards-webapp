@@ -1,28 +1,36 @@
 import React, { useState }  from "react"
-import './CardViewer.css'
 import Card from '../Card/Card'
-import AddCard from '../Card/AddCard'
+
 
 function CardViewer() {
 
   const [cards, setCards] = useState([])
+  const [question, setQuestion] = useState(null)
+  const [answer, setAnswer] = useState(null)
+  const [id, setId] = useState(0)
 
-  let id = 0
 
-  const addNewCard = (question, answer) => {
+  const addNewCard = () => {
+    console.log(cards.length);
     const flashcard = {
         id: id,
         question: question,
         answer: answer,
     }
     setCards([...cards, flashcard]);
-    id++;
+    setId(id+1);
   }
     return (
         <div className='cardviewer-container'>
-        <AddCard addNewCard={addNewCard}></AddCard>
-        <div>
-       {cards.map(card => {
+        <div className='add-container'>
+        <div className="addFlashcard"> <h3>Add Flashcard </h3>
+        <label> Question: <input type='text' placeholder="What is...?" onChange={e => setQuestion(e.target.value)}></input> </label>
+        <label> Answer: <input type='text' placeholder="It is..." onChange={e => setAnswer(e.target.value)}></input> </label>
+        <button type="submit" className="btn" onClick={addNewCard}>Add</button>
+        </div>
+        </div>
+        <div className="cardList">
+        {cards.map(card => {
            return <Card question={card.question} answer={card.answer} key={card.id} />
        })}
        </div>

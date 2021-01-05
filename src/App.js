@@ -1,6 +1,5 @@
 import './App.css';
 import Navbar from './components/navbar'
-import AddCard from './components/Card/AddCard'
 import CardViewer from './components/CardViewer/CardViewer'
 
 function App() {

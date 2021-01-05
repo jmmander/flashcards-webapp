@@ -1,14 +1,18 @@
 import React, { useState }  from "react"
 import './Card.css'
 
-function Card(question, answer, id) {
+function Card(props) {
 
     return (
         <div className='card-container'>
         <div className="flashcard">
-        id = {id}
-        q = {question}
-        a = {answer}
+
+        <p>
+        q = {props.question}
+        </p>
+        <p>
+        a = {props.answer}
+        </p>
         </div>
         </div>
 );
