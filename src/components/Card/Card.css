@@ -1,0 +1,40 @@
+.flashcard {
+    border: black 2px solid;
+    height: 300px;
+    width: 200px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.question {
+    border-bottom: gray 1px solid;
+}
+
+.answer {
+    padding-top: 13px;
+}
+
+.halfcard  {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.edit-container {
+justify-content: flex-end;
+display: flex;
+}
+
+.editable  {
+    border: none
+}
+
+.icon {
+    border: none;
+    background-color: transparent;
+    margin: none;
+    padding: none;
+    color: gray;
+}

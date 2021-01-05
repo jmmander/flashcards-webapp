@@ -1,5 +1,6 @@
-import React, { useState }  from "react"
-import Card from '../Card/Card'
+import React, { useState }  from "react";
+import Card from '../Card/Card';
+import './CardViewer.css'
 
 
 function CardViewer() {
@@ -17,9 +18,26 @@ function CardViewer() {
         question: question,
         answer: answer,
     }
+    console.log("new card")
+    console.log(flashcard)
     setCards([...cards, flashcard]);
     setId(id+1);
+    console.log(id)
+    setQuestion("");
+    setAnswer("");
   }
+
+  const deleteCard = (id) => {
+    setCards(cards.filter(card => card.id !== id))
+  }
+
+  const updateCard = (id, newQuestion, newAnswer) => {
+    setCards(cards.map(card => {
+        if (card.id !== id) return card;
+        return {...card, question: newQuestion, answer: newAnswer}
+    }))
+  }
+
     return (
         <div className='cardviewer-container'>
         <div className='add-container'>
@@ -31,7 +49,7 @@ function CardViewer() {
         </div>
         <div className="cardList">
         {cards.map(card => {
-           return <Card question={card.question} answer={card.answer} key={card.id} />
+           return <Card question={card.question} answer={card.answer} id={card.id} key={card.id} deleteCard={deleteCard} updateCard={updateCard}/>
        })}
        </div>
         </div>
